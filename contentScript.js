@@ -14,7 +14,10 @@ document.addEventListener(
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
   if (request == "getClickedEl") {
     console.log(clickedEl);
-    console.log({ value: clickedEl });
-    sendResponse(clickedEl);
+    var myResponse = {};
+    myResponse['items'] = [].slice.call(clickedEl.children).map(option => option.innerText).filter(text => !text.indexOf("GMT") !== -1);
+    myResponse['id'] = clickedEl.id;
+    console.log(myResponse);
+    sendResponse(myResponse);
   }
 });

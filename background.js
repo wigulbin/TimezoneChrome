@@ -7,8 +7,8 @@ chrome.runtime.onInstalled.addListener(function() {
 });
 
 function mycallback(info, tab) {
-  chrome.tabs.sendMessage(tab.id, "getClickedEl", function(clickedEl) {
-    console.log(clickedEl);
+  chrome.tabs.sendMessage(tab.id, "getClickedEl", function(myResponse) {
+    console.log(myResponse);
   });
 }
 
